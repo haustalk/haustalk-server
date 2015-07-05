@@ -1,46 +1,37 @@
-// server.js
-
-// BASE SETUP
-// =============================================================================
-
-// call the packages we need
-var express    = require('express');        // call express
-var app        = express();                 // define our app using express
+var express = require('express');
+var app = express();
 var bodyParser = require('body-parser');
 
-// configure app to use bodyParser()
-// this will let us get the data from a POST
+//Parses posted data
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port = process.env.PORT || 8800;        // set our port
+//The port that the connection
+var port = process.env.PORT || 8800;
 
+//Connect to mongo
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://localhost/myapp'); // connect to our database
+mongoose.connect('mongodb://localhost/myapp');
 
-// ROUTES FOR OUR API
-// =============================================================================
-var router = express.Router();              // get an instance of the express Router
+//API Routes
+var router = express.Router();
 
-// middleware to use for all requests
+//Request middleware
 router.use(function(req, res, next) {
-    // do logging
-    console.log('Something is happening.');
+    console.log('I am a thing.');
     next(); // make sure we go to the next routes and don't stop here
 });
 
-// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
+//Root welcome screen
 router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!' });   
+    res.json({ message: 'This is an api' });   
 });
 
 router.use('/devices', require('./app/routes/device'));
 
-// REGISTER OUR ROUTES -------------------------------
-// all of our routes will be prefixed with /api
+//Register routes
 app.use('/api', router);
 
-// START THE SERVER
-// =============================================================================
+//Start server
 app.listen(port);
 console.log('Magic happens on port ' + port);
