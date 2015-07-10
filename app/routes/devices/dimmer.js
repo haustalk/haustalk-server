@@ -13,7 +13,6 @@ router.route('/')
         //Set the dimmer fields
         dimmer.name = req.body.name;
         dimmer.node = req.body.node;
-
         //Save the new dimmer
         dimmer.save(function(err) {
             if (err) {
@@ -55,9 +54,7 @@ router.route('/:dimmer_id')
                 res.send(err);
             }
             View.setLevel(dimmer, req.body.level);
-            var response = View.getOne(dimmer);
-            response.level = req.body.level;
-            res.json(response);    
+            res.send(204);
         });
     });
 
