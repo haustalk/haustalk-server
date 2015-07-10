@@ -13,25 +13,9 @@ var port = process.env.PORT || 8800;
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://localhost/myapp');
 
-//API Routes
-var router = express.Router();
-
-//Request middleware
-router.use(function(req, res, next) {
-    console.log('I am a thing.');
-    next(); // make sure we go to the next routes and don't stop here
-});
-
-//Root welcome screen
-router.get('/', function(req, res) {
-    res.json({ message: 'This is an api' });   
-});
-
-router.use('/devices', require('./app/routes/device'));
-
-//Register routes
-app.use('/api', router);
+//Serve the API application
+app.use(require('./apps/api/app'));
 
 //Start server
 app.listen(port);
-console.log('Magic happens on port ' + port);
+console.log('Server started on port: ' + port);
