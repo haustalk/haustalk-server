@@ -18,7 +18,7 @@ router.post('/register', function(req, res) {
     Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
         //Check if ther ewas an error registering the account
         if (err) {
-            return res.render('register', { account : account });
+            return res.status(422).render('register', {info: 'That username already exists.'});
         }
         //Redirect the user to the root user page
         passport.authenticate('local')(req, res, function () {

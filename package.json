@@ -4,7 +4,7 @@
     "main": "server.js",
     "scripts": {
         "start": "nodejs ./server.js",
-        "test": "make test"
+        "test": "./node_modules/.bin/mocha"
     },
     "repository": {
         "type": "git",
@@ -21,6 +21,8 @@
         "passport-local": "^1.0.0",
         "passport-local-mongoose": "^1.0.0",
         "mocha": "~1.14.0",
+        "chai": "~1.8.1",
+        "should": "~2.1.0",
         "jade": "^1.9.1"
     },
     "keywords": [
