@@ -15,21 +15,8 @@ app.set('view engine', 'jade');
 app.use(passport.initialize()); //Initilize passport
 require('./app/auth'); //Add the passport authentication strategies
 
-//This application will only route through the users.* subdomain
+//This application will only route through the accounts.* subdomain
 app.use(subdomain('accounts', require('./app/router')));
 
-/*
-app.post('/oauth/token', oauth2.token);
-app.get('/api/userInfo',
-    passport.authenticate('bearer', { session: false }),
-        function(req, res) {
-            // req.authInfo is set using the `info` argument supplied by
-            // `BearerStrategy`.  It is typically used to indicate a scope of the token,
-            // and used in access control checks.  For illustrative purposes, this
-            // example simply returns the scope in the response.
-            res.json({ user_id: req.user.userId, name: req.user.username, scope: req.authInfo.scope })
-        }
-);
-*/
 //Export the authentication app for use an the main application
 module.exports = app;

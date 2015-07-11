@@ -15,7 +15,7 @@ app.use(require('express-session')({
     saveUninitialized: false
 }));
 
-//Connect to mongo
+//Connect mongo database
 var mongoose   = require('mongoose');
 mongoose.connect(config.get('database:uri'));
 

@@ -1,5 +1,10 @@
+var express = require('express');
+var passport = require('passport');
+var User = require('../models/user');
+var router = express.Router();
+var log = require('../../../core/log');
 
-//Root page for ?Users
+//Root page for Users
 router.get('/', function (req, res) {
     res.render('index', { user : req.user });
 });
@@ -11,30 +16,21 @@ router.get('/register', function(req, res) {
 
 //Handle registration of a new user
 router.post('/register', function(req, res) {
-    Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
-        //Check if ther ewas an error registering the account
+    //Create a new user
+    var user = new User({ 
+        username: req.body.username,
+        password: req.body.password 
+    });
+    //Store the new user in the system
+    user.save(function (err, user) {
+        //Check if there was an error
         if (err) {
             return res.status(422).render('register', {info: 'That username already exists.'});
         }
-        //Redirect the user to the root user page
-        passport.authenticate('local')(req, res, function () {
-            res.redirect('/');
-        });
+        log.info('Registered new user: ' + user.username);
+        //Redirect the user to the root page
+        res.redirect('/');
     });
 });
 
-//Page to login as a user
-router.get('/login', function(req, res) {
-    res.render('login', { user : req.user });
-});
-
-//Handle users logging in to the system
-router.post('/login', passport.authenticate('local'), function(req, res) {
-    res.redirect('/');
-});
-
-//Handle users logging out of the system
-router.get('/logout', function(req, res) {
-    req.logout();
-    res.redirect('/');
-});
+module.exports = router;

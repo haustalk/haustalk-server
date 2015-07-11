@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-//Include the routes for the dimmer
-//router.use('/', require('./routes/users'));
+//Include the routes for the html front end
+router.use('/', require('./routes/users'));
 
 //Include routes for the oauth handler
 router.use('/oauth', require('./routes/oauth'));
