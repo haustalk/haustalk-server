@@ -1,9 +1,14 @@
 {
     "name": "haustalk",
+    "version": "0.0.1",
     "main": "server.js",
     "scripts": {
         "start": "nodejs ./server.js",
-        "test": "node ./test/run.js"
+        "test": "make test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:haustalk/haustalk-server.git"
     },
     "dependencies": {
         "express": "~4.0.0",
@@ -11,9 +16,19 @@
         "body-parser": "~1.0.1",
         "express-subdomain": "~1.0.3",
         "openzwave-shared": "~1.0.0",
+        "express-session": "^1.10.1",
         "passport": "^0.2.1",
         "passport-local": "^1.0.0",
         "passport-local-mongoose": "^1.0.0",
-        "express-session": "^1.10.1"
-    }
+        "mocha": "~1.14.0",
+        "jade": "^1.9.1"
+    },
+    "keywords": [
+        "home",
+        "automation",
+        "zwave",
+        "housetalk",
+        "lights"
+    ],
+    "liscence": "MIT"
 }
