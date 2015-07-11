@@ -1,7 +1,7 @@
 var express  = require('express');
 var router   = express.Router();
 
-var Dimmer = require('../../models/devices/dimmer');
+var Dimmer = require('../../../../core/models/devices/dimmer');
 var View = require('../../views/devices/dimmer');
 
 //Routes for dimmers

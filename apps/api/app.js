@@ -1,5 +1,6 @@
 var express = require('express');
 var subdomain = require('express-subdomain');
+
 var app = express();
 
 //This application will only route through the api.* subdomain

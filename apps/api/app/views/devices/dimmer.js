@@ -1,5 +1,5 @@
-var zwave = require('../../zwave.js').zwave();
-var Dimmer = require('../../models/devices/dimmer');
+var zwave = require('../../../../core/zwave').zwave();
+var Dimmer = require('../../../../core/models/devices/dimmer');
 
 //Returns a list of dimmers
 exports.getAll = function (dimmers_in) {

@@ -1,7 +1,7 @@
 var express  = require('express');
 var router   = express.Router();
 
-var Dimmer = require('../models/devices/dimmer');
+var Dimmer = require('../../../core/models/devices/dimmer');
 
 //Routes for devices
 router.route('/')
