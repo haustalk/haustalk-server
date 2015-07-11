@@ -3,7 +3,6 @@ var subdomain = require('express-subdomain');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var path = require('path');
-var oauth2 = require('./app/oauth2');
 
 //Create a new express app
 var app = express();
@@ -12,12 +11,14 @@ var app = express();
 app.set('views', path.join(__dirname, './app/views'));
 app.set('view engine', 'jade');
 
-//This application will only route through the users.* subdomain
-app.use(subdomain('accounts', require('./app/router')));
-
 //Passport setup
 app.use(passport.initialize()); //Initilize passport
 require('./app/auth'); //Add the passport authentication strategies
+
+//This application will only route through the users.* subdomain
+app.use(subdomain('accounts', require('./app/router')));
+
+/*
 app.post('/oauth/token', oauth2.token);
 app.get('/api/userInfo',
     passport.authenticate('bearer', { session: false }),
@@ -29,6 +30,6 @@ app.get('/api/userInfo',
             res.json({ user_id: req.user.userId, name: req.user.username, scope: req.authInfo.scope })
         }
 );
-
+*/
 //Export the authentication app for use an the main application
 module.exports = app;
