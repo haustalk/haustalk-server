@@ -1,0 +1,15 @@
+{
+	"port": 1337,
+	"database": {
+		"uri": "mongodb://localhost/myapp"
+	},
+	"express-session": {
+		"secret": "bubbacheese987AA3"
+	},
+	"log": {
+		"winston-level": "debug"
+	},
+	"security": {
+		"token-life": 3600
+	}
+}

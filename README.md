@@ -1,6 +1,7 @@
-# haustalk
-Production: [![Build Status](https://travis-ci.org/haustalk/haustalk-server.svg?branch=master)](https://travis-ci.org/haustalk/haustalk-server)<br>
-Development: [![Build Status](https://travis-ci.org/haustalk/haustalk-server.svg?branch=develop)](https://travis-ci.org/haustalk/haustalk-server)
+# haustalk-server
+[![Build Status](https://travis-ci.org/haustalk/haustalk-server.svg?branch=master)](https://travis-ci.org/haustalk/haustalk-server)
+[![Code Climate](https://codeclimate.com/github/haustalk/haustalk-server/badges/gpa.svg)](https://codeclimate.com/github/haustalk/haustalk-server)
+<br>
 
 ---
 ### Requirements
