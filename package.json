@@ -17,15 +17,15 @@
         "express-subdomain": "~1.0.3",
         "express-session": "^1.10.1",
         "jade": "^1.9.1",
-        
+
+        "nconf": "^0.7.1",
+        "winston": "^1.0.1",
+
         "oauth2orize": "^1.0.x",
         "passport": "^0.2.x",
         "passport-http": "^0.2.x", 
         "passport-http-bearer": "^1.0.x",
-        "passport-oauth2-client-password": "^0.1.x",
-
-        "nconf": "^0.7.1",
-        "winston": "^1.0.1",       
+        "passport-oauth2-client-password": "^0.1.x", 
 
         "visualcaptcha": "0.1.x",
         "openzwave-shared": "~1.0.0"

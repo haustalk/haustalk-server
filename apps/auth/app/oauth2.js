@@ -13,7 +13,6 @@ var crypto = require('crypto');
 
 var config = require('../../core/config');
 var UserModel = require('./models/user');
-var ClientModel = require('./models/client');
 var AccessTokenModel = require('./models/access_token');
 var RefreshTokenModel = require('./models/refresh_token');
 
@@ -40,11 +39,15 @@ server.exchange(oauth2orize.exchange.password(function(client, username, passwor
 
         //Remove any existing refresh token associated with the specified user from the system
         RefreshTokenModel.remove({ userId: user.userId, clientId: client.clientId }, function (err) {
-            if (err) return done(err);
+            if (err) {
+                return done(err);
+            }
         });
         //Remove any existing access token associated with the specified user from the system
         AccessTokenModel.remove({ userId: user.userId, clientId: client.clientId }, function (err) {
-            if (err) return done(err);
+            if (err) {
+                return done(err);
+            }
         });
 
         //Generate a key for the new token
@@ -63,7 +66,7 @@ server.exchange(oauth2orize.exchange.password(function(client, username, passwor
         });
         var info = {
         	scope: '*'
-        }
+        };
         //Store the new refresh token in the system
         token.save(function (err, token) {
             if (err) {
@@ -100,11 +103,15 @@ server.exchange(oauth2orize.exchange.refreshToken(function(client, refreshToken,
 
             //Remove any existing refresh token associated with the specified user from the system
             RefreshTokenModel.remove({ userId: user.userId, clientId: client.clientId }, function (err) {
-                if (err) return done(err);
+                if (err) {
+                    return done(err);
+                }
             });
             //Remove any existing access token associated with the specified user from the system
             AccessTokenModel.remove({ userId: user.userId, clientId: client.clientId }, function (err) {
-                if (err) return done(err);
+                if (err) {
+                    return done(err);
+                }
             });
 
             //Generate a key for the new access token
@@ -123,7 +130,7 @@ server.exchange(oauth2orize.exchange.refreshToken(function(client, refreshToken,
             });
             var info = {
             	scope: '*'
-            }
+            };
             //Ad the new access token to the system
             token.save(function (err, token) {
                 if (err) {
@@ -140,4 +147,4 @@ exports.token = [
     passport.authenticate(['basic', 'oauth2-client-password'], { session: false }),
     server.token(),
     server.errorHandler()
-]
+];

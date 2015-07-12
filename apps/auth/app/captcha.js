@@ -26,12 +26,11 @@ module.exports.startRoute = function(req, res, next) {
     var visualCaptcha = require('visualcaptcha')(req.session, req.query.namespace);
     //Generate the specified number of captcha options
     visualCaptcha.generate(req.params.howmany);
-    //Send the required data for the front end componant
+    //Send the required data for the front end componant 
     res.status(200).send(visualCaptcha.getFrontendData());
 };
 
 //Try to validate the captcha
-// We need to make sure we generate new options after trying to validate, to avoid abuse
 module.exports.trySubmission = function(req, res, next) {
     var namespace = req.query.namespace;
     var queryParams = [];
@@ -42,7 +41,7 @@ module.exports.trySubmission = function(req, res, next) {
 
     //Start visualCaptcha
     var visualCaptcha = require('visualcaptcha')(req.session, req.query.namespace);
-    //Generate the required data for the front end componant
+    //Extract the front end data for the current captcha
     var frontendData = visualCaptcha.getFrontendData();
     // Add namespace to query params
     if (namespace && namespace.length !== 0) {
