@@ -15,22 +15,26 @@
         "mongoose": "~3.6.13",
         "body-parser": "~1.0.1",
         "express-subdomain": "~1.0.3",
-        "openzwave-shared": "~1.0.0",
         "express-session": "^1.10.1",
-
-        "faker": "^2.0.x",
+        "jade": "^1.9.1",
+        
         "oauth2orize": "^1.0.x",
         "passport": "^0.2.x",
-        "passport-http": "^0.2.x",
+        "passport-http": "^0.2.x", 
         "passport-http-bearer": "^1.0.x",
         "passport-oauth2-client-password": "^0.1.x",
 
         "nconf": "^0.7.1",
-        "winston": "^1.0.1",
+        "winston": "^1.0.1",       
+
+        "visualcaptcha": "0.1.x",
+        "openzwave-shared": "~1.0.0"
+    },
+    "devDependencies": {
         "mocha": "~1.14.0",
         "chai": "~1.8.1",
         "should": "~2.1.0",
-        "jade": "^1.9.1"
+        "faker": "^2.0.x"
     },
     "keywords": [
         "home",

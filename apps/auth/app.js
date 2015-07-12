@@ -16,7 +16,11 @@ app.use(passport.initialize()); //Initilize passport
 require('./app/auth'); //Add the passport authentication strategies
 
 //This application will only route through the accounts.* subdomain
-app.use(subdomain('accounts', require('./app/router')));
+//app.use(subdomain('accounts', require('./app/router')));
+var router = express.Router();
+router.use('/accounts', require('./app/router'));
+app.use(router);
+//Disabled subdomain for local testing
 
 //Export the authentication app for use an the main application
 module.exports = app;
