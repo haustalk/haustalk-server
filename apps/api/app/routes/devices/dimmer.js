@@ -2,7 +2,6 @@ var express  = require('express');
 var router   = express.Router();
 
 var Dimmer = require('../../../../core/models/devices/dimmer');
-var View = require('../../views/devices/dimmer');
 
 //Routes for dimmers
 router.route('/')
@@ -19,7 +18,7 @@ router.route('/')
                 res.send(err);
             }
             res.status(201).json(dimmer);
-        });        
+        });
     })
     //Get a list of all the dimmers
     .get(function(req, res) {
@@ -30,7 +29,7 @@ router.route('/')
                 return;
             }
             //Return a json representation of the dimmer
-            res.json(View.getAll(dimmers));
+            res.json(dimmers);
         });
     });
 
@@ -43,7 +42,7 @@ router.route('/:dimmer_id')
                 res.send(404);
                 return;
             }
-            res.json(View.getOne(dimmer));
+            res.json(dimmer);
         });
     })
     //Make changes to an existing instance a dimmer
@@ -51,9 +50,17 @@ router.route('/:dimmer_id')
         Dimmer.findById(req.params.dimmer_id, function(err, dimmer) {
             //Check if error occured when finding dimmer
             if (err) {
-                res.send(err);
+                res.status(400).send(err);
             }
-            View.setLevel(dimmer, req.body.level);
+            //Set the new values
+            dimmer.level = req.body.level;
+            dimmer.name = req.body.name;
+            //Save the modifications to the dimmer
+            dimmer.save(function(err) {
+            	if (err) {
+            		res.status(400).send(err);
+            	}
+            });
             res.send(204);
         });
     });

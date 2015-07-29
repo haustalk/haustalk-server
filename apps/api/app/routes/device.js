@@ -1,3 +1,12 @@
+/***********************************
+ * Routes for the main device list
+ *
+ * Author: Nick DelBen
+ * Created: July 11, 2015
+ * Last Update: July 11, 2015
+ *   - Created initially
+ **********************************/
+
 var express  = require('express');
 var router   = express.Router();
 
